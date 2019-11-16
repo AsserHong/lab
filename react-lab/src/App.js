@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import './App.css'
-import { Table, Button } from 'antd'
+import { Table, Button, Col, Row } from 'antd'
 import axios from 'axios'
 import OptBox from './components/opt-box'
 
@@ -57,8 +57,18 @@ class App extends PureComponent {
 	render = () => {
 		return (
 			<>
-			<Button type='primary' onClick={this.rq1}>请求列表</Button>
-			<Button type='default' onClick={this.rq2}>单独请求</Button>
+			<Row style={{marginBottom: 20}}>
+				注意: 内容字段为0时，编辑框显示确认按钮；为1时，不显示确认按钮
+			</Row>
+			<Row gutter={24}>
+				<Col span={4}>
+					<Button type='primary' onClick={this.rq1}>请求列表</Button>
+				</Col>
+				<Col span={4}>
+					<Button type='default' onClick={this.rq2}>单独请求</Button>
+				</Col>
+			</Row>
+
 			<Table
 				dataSource={this.state.data}
 				columns={getCols()}
