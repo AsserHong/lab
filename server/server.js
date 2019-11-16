@@ -1,3 +1,10 @@
 const Koa = require('koa')
 const Router = require('koa-router')
+const Static = require('koa-static')
 const app = new Koa()
+const router = new Router()
+require('./api/get-list')(router)
+app.use(router.routes())
+    .use(router.allowedMethods())
+app.listen(10000)
+console.log('server is running on port 10000');
